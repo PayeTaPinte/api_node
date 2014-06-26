@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		title API - Bars
+		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='/styles/main.css')
+
+	body
+		div.container
+			div
+				each bar in bars
+					div.row
+						div.col-md-6= bar.name
+						div.col-md-3= bar.price
+						div.col-md-3 
+							a(href='/bar/#{bar.id}').btn.btn-primary details
+							form(method="POST" action="/api/bar/#{bar.id}?_method=DELETE")
+								button(type="submit").btn.btn-danger Delete

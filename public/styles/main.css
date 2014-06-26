@@ -1,0 +1,16 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+html body {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+html body .login-container {
+  text-align: center;
+}
+html body .login-container .button button {
+  width: 100%;
+}
+

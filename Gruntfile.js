@@ -11,21 +11,21 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 files: {
-                    "scripts/main.js": "scripts/coffee/*.coffee"
+                    "public/scripts/main.js": "public/scripts/coffee/*.coffee"
                 }
             }
         },
         less: {
             main: {
                 files: {
-                    "styles/main.css": "styles/less/*.less",
+                    "public/styles/main.css": "public/styles/less/*.less",
                 }
             }
         },
         watch: {
             coffee: {
                 files: [
-                    "scripts/coffee/*.coffee"
+                    "public/scripts/coffee/*.coffee"
                 ],
                 options: {
                     livereload: true
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
             },
             less: {
                 files: [
-                    'styles/less/*.less'
+                    'public/styles/less/*.less'
                 ],
                 options: {
                     livereload: true
