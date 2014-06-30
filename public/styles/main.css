@@ -1,3 +1,101 @@
+.container .row .col-md-12 .panel .panel-heading,
+.container .row .col-sm-12 .panel .panel-heading,
+.container .row .col-xs-12 .panel .panel-heading {
+  padding: 0;
+  margin: 0;
+  box-shadow: 0px 1px 10px #555;
+  background-color: #fff;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th {
+  background-color: #f8f8f8;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th,
+.container .row .col-md-12 .panel .panel-heading .table tbody tr td,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr td,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr td {
+  text-align: center;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
+.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button {
+  background-color: transparent;
+  border: none;
+  float: left;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
+.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get {
+  color: #5cb85c;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
+.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put {
+  color: #428bca;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
+.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete {
+  color: #c9302c;
+}
+
+#login-container {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  width: 100%;
+}
+#login-container .raw #login {
+  text-align: center;
+  padding-bottom: 50px;
+}
+#login-container .raw #login form label {
+  float: left;
+}
+#login-container .raw #login form input {
+  background-color: white;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  border-bottom: 2px solid #ccc;
+}
+#login-container .raw #login form .form-control:focus {
+  border-color: rgba(255, 224, 45, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(255, 224, 45, 0);
+  outline: 0 none;
+}
+#login-container .raw #login form .button #login-submit {
+  background-color: white;
+  color: #222222;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+#login-container .raw #login form .button #login-submit:focus {
+  border-color: rgba(255, 224, 45, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(255, 224, 45, 0);
+  outline: 0 none;
+}
+#login-container .raw #login form .button span {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -5,12 +103,6 @@ html {
 html body {
   width: 100%;
   height: 100%;
+  background-color: white;
   display: table;
 }
-html body .login-container {
-  text-align: center;
-}
-html body .login-container .button button {
-  width: 100%;
-}
-

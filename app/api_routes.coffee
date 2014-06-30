@@ -75,8 +75,6 @@ router.route('/bar/:bar_id')
 
 router.route('/users')
 	.get (req, res) ->
-		console.log 'GET "users"'
-
 		User.find (err, users) ->
 			if(err)
 				console.log 'error', err

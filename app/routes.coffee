@@ -10,6 +10,7 @@ router.route('/bars')
 			if bars
 				res.render 'bars/index',
 					bars: bars
+					currentUser: req.user.local.username
 			else
 				throw 'no bars found'
 			if err
@@ -22,6 +23,8 @@ router.route('/bar/:bar_id')
 				res.render 'bars/bar', 
 					barId: bar.id
 					barName: bar.name
+					barAddress: bar.address
+					barPrice: bar.price
 			else
 				throw 'no bar found'
 			if err
@@ -30,9 +33,13 @@ router.route('/bar/:bar_id')
 router.route('/users/')
 	.get userFunctions.isAdmin, (req, res) ->
 		User.find (err, users) ->
+			if users
+				res.render 'users/index',
+					users: users
+					currentUser: req.user.local.username
+			else
+				throw 'No users found'
 			if err
-				throw err
-
-			res.render 'users/index'
+				console.log 'error', err
 
 module.exports = router

@@ -6,13 +6,47 @@ html
 		link(rel='stylesheet', href='/styles/main.css')
 
 	body
+		nav.navbar.navbar-default(role='navigation')
+			div.container-fluid
+				div.navbar-header
+					a.navbar-brand(href='/bars/') API
+				div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+					ul.nav.navbar-nav
+						li
+							a(href='/bars/') Bars
+						li
+							a(href='/users/') Users
+					ul.nav.navbar-nav.navbar-right
+						li
+							a Yo #{currentUser}
+						li
+							a(href='/auth/lougout')
+								span.glyphicon.glyphicon-off
+
 		div.container
-			div
-				each bar in bars
-					div.row
-						div.col-md-6= bar.name
-						div.col-md-3= bar.price
-						div.col-md-3 
-							a(href='/bar/#{bar.id}').btn.btn-primary details
-							form(method="POST" action="/api/bar/#{bar.id}?_method=DELETE")
-								button(type="submit").btn.btn-danger Delete
+				div.row
+					div.col-md-12.col-sm-12.col-xs-12
+						div.panel.panel-default
+							div.panel.panel-heading
+								table.table
+									tr
+										th Name
+										th Price
+										th Address
+										th Actions
+									each bar in bars
+										tr
+											td= bar.name
+											td= bar.price
+											td= bar.address.split(",")[0]
+											td
+												div.crud
+													form(method='get' action='/api/bar/#{bar.id}')
+														button(type='submit' class='crud-button')
+															span.glyphicon.glyphicon-share-alt#get
+													form(method='post' action='/api/bar/#{bar.id}?_method=put')
+														button(type='submit' class='crud-button')
+															span.glyphicon.glyphicon-edit#put
+													form(method='post' action="/api/bar/#{bar.id}?_method=delete")
+														button(type="submit" class="crud-button")
+															span.glyphicon.glyphicon-remove#delete
