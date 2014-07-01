@@ -27,6 +27,8 @@
 .container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button {
   background-color: transparent;
   border: none;
+  padding: 0;
+  padding-left: 10px;
   float: left;
 }
 .container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
