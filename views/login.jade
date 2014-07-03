@@ -8,8 +8,8 @@ html
 	body
 		div.container#login-container
 			div.raw
-				div.col-sm-4.col-sm-offset-4.col-xs-10.col-xs-offset-1#login
-					img(src='/img/api_logo.png' width='150' height='132')
+				div#login
+					img(src='/img/api_logo.png' width='120' height='106' id="api-logo")
 					
 					if (message.length > 0)
 						p(class = 'alert alert-danger')= message
@@ -18,11 +18,11 @@ html
 						div(class = 'form-group')
 							//- label Username
 							input(type = "text" class = "form-control" name='username' placeholder='Name')
-						div(class = 'form-group')
+						div(class = 'form-group' id="password-input")
 							//- label Password
 							input(type = "password" class = "form-control" id = "exampleInputEmail1" name='password' placeholder='Password')
+						p#create-account
+							a(href='/auth/signup') Create an account
 						div(class = 'button form-group')
 							button(type = 'submit' class='btn btn-primary' id='login-submit') Login
-						p
-							a(href='/auth/signup') Create an account
 							//- img(src='/img/ptp_logo.png' class='img-responsive')

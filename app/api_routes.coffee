@@ -110,6 +110,6 @@ router.route('/user/:user_id')
 			(err, req) ->
 				if err
 					throw err
-				else res.redirect '/users/'m
+				else res.redirect '/users/'
 
 module.exports = router
