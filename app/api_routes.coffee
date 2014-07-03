@@ -1,4 +1,5 @@
 express = require('express')
+geocoder = require('node-geocoder').getGeocoder('google', 'http')
 Bar = require('./bars/models/bar')
 User = require('./users/models/user')
 
@@ -13,15 +14,17 @@ userFunctions = require('./usersFunctions')
 router.route('/bars')
 	.post (req, res) ->
 		res.redirect '/auth/login' unless req.isAuthenticated()
-		console.log 'POST "bars"';
 		bar = new Bar(req.body)
 		bar.name = req.body.name
-
-		bar.save (err, bar) ->
-			if(err)
-				console.log 'error', err
-
-			res.send(200, bar)
+		bar.price = req.body.price
+		bar.address = req.body.address
+		geocoder.geocode req.body.address, (err, result) ->
+			console.log result
+			bar.location = result
+			bar.save (err, bar) ->
+				if(err)
+					console.log 'error', err
+				res.send(200, bar)
 			# res.json message: "Bar created"
 
 	.get (req, res) ->
@@ -52,13 +55,15 @@ router.route('/bar/:bar_id')
 			if(err)
 				res.send(err)
 
-			bar.name = req.body.name;
-
-			bar.save (err, bar) ->
-				if err
-					console.log 'error', err
-				else
-					res.send 200, bar
+			bar.name = req.body.name
+			bar.address = req.body.address
+			bar.price = req.body.price
+			geocoder.geocode req.body.address, (err, result) ->
+				bar.location = result
+				bar.save (err, bar) ->
+					if(err)
+						throw err
+					res.send(200, bar)
 
 	.delete userFunctions.isAdmin, (req, res) ->
 		Bar.remove
@@ -98,5 +103,13 @@ router.route('/user/:user_id')
 				console.log 'error', err
 
 			res.json(user)
+
+	.delete userFunctions.isAdmin, (req, res) ->
+		User.remove
+			_id: req.params.user_id
+			(err, req) ->
+				if err
+					throw err
+				else res.redirect '/users/'m
 
 module.exports = router

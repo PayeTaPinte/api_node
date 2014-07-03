@@ -1,5 +1,22 @@
 .container {
 	.row {
+		padding-bottom: 10px;
+		#add-div {
+			#add-container {
+				width: 100%;
+
+				#add-bar-btn {
+					float: right;
+					width: 100%;
+					#plus {
+						float: left;
+					}
+					#p {
+						float: right;
+					}
+				}
+			}
+		}
 		.col-md-12, .col-sm-12, .col-xs-12 {
 			.panel .panel-heading{
 				padding: 0;
@@ -14,28 +31,84 @@
 							}
 							th, td {
 								text-align: center;
-								.crud {
-									.crud-button {
-										background-color: transparent;
-										border: none;
-										padding: 0;
-										padding-left: 10px;
-										float: left;
+							}
+							.crud {
+								width: 70px;
+								height: 25px;
+								margin: 0 auto;
+								a {
+									float: left;
+									width: 25px;
 
-										#get {
-											color: #5cb85c;
-										}
+									#edit {
+										width: 25px;
+										height: 20px;
+										color: #5cb85c;
+									}
+								}
 
-										#put {
-											color: #428bca;
-										}
+								button {
+									width: 25px;
+									border: none;
+									background-color: transparent;
+									width: 25px;
+									height: 20px;
 
-										#delete {
-											color: #c9302c;
-										}
+									#delete {
+										color: #d9534f;
+										width: 25px;
+										height: 20px;
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#remove-alert {
+		display: table;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		#alert-container {
+			display: table-cell;
+			vertical-align: middle;
+			width: 30%;
+			height: 20%;
+			background-color: rgba(0, 0, 0, 0.1);
+			margin: 0 auto;
+
+			#alert-content {
+				border-radius: 8px;
+				border-color: #d9534f;
+				text-align: center;
+				margin: 0 auto;
+				width: 33%;
+				height: 20%;
+				min-width: 300px;
+				min-height: 175px;
+
+				.panel-heading {
+					background-color: #d9534f;
+					color: #ffffff;
+				}
+
+				.panel-body {
+					padding: 0;
+					color: #d9534f;
+
+					#buttons {
+						width: 142px;
+						height: 35px;
+						margin: 0 auto;
+
+						button {
+							float: left;
 						}
 					}
 				}

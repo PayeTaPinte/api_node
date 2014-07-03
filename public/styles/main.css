@@ -1,3 +1,19 @@
+.container .row {
+  padding-bottom: 10px;
+}
+.container .row #add-div #add-container {
+  width: 100%;
+}
+.container .row #add-div #add-container #add-bar-btn {
+  float: right;
+  width: 100%;
+}
+.container .row #add-div #add-container #add-bar-btn #plus {
+  float: left;
+}
+.container .row #add-div #add-container #add-bar-btn #p {
+  float: right;
+}
 .container .row .col-md-12 .panel .panel-heading,
 .container .row .col-sm-12 .panel .panel-heading,
 .container .row .col-xs-12 .panel .panel-heading {
@@ -19,41 +35,82 @@
 .container .row .col-xs-12 .panel .panel-heading .table tbody tr td {
   text-align: center;
 }
-.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button,
-.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  padding-left: 10px;
-  float: left;
+.container .row .col-md-12 .panel .panel-heading .table tbody tr .crud,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr .crud,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr .crud {
+  width: 70px;
+  height: 25px;
+  margin: 0 auto;
 }
-.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #get,
-.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #get {
+.container .row .col-md-12 .panel .panel-heading .table tbody tr .crud a,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr .crud a,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr .crud a {
+  float: left;
+  width: 25px;
+}
+.container .row .col-md-12 .panel .panel-heading .table tbody tr .crud a #edit,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr .crud a #edit,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr .crud a #edit {
+  width: 25px;
+  height: 20px;
   color: #5cb85c;
 }
-.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #put,
-.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #put {
-  color: #428bca;
+.container .row .col-md-12 .panel .panel-heading .table tbody tr .crud button,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr .crud button,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr .crud button {
+  border: none;
+  background-color: transparent;
+  width: 25px;
+  height: 20px;
 }
-.container .row .col-md-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr th .crud .crud-button #delete,
-.container .row .col-md-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete,
-.container .row .col-sm-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete,
-.container .row .col-xs-12 .panel .panel-heading .table tbody tr td .crud .crud-button #delete {
-  color: #c9302c;
+.container .row .col-md-12 .panel .panel-heading .table tbody tr .crud button #delete,
+.container .row .col-sm-12 .panel .panel-heading .table tbody tr .crud button #delete,
+.container .row .col-xs-12 .panel .panel-heading .table tbody tr .crud button #delete {
+  color: #d9534f;
+  width: 25px;
+  height: 20px;
+}
+.container #remove-alert {
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.container #remove-alert #alert-container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 30%;
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+.container #remove-alert #alert-container #alert-content {
+  border-radius: 8px;
+  border-color: #d9534f;
+  text-align: center;
+  margin: 0 auto;
+  width: 33%;
+  height: 20%;
+  min-width: 300px;
+  min-height: 175px;
+}
+.container #remove-alert #alert-container #alert-content .panel-heading {
+  background-color: #d9534f;
+  color: #ffffff;
+}
+.container #remove-alert #alert-container #alert-content .panel-body {
+  padding: 0;
+  color: #d9534f;
+}
+.container #remove-alert #alert-container #alert-content .panel-body #buttons {
+  width: 142px;
+  height: 35px;
+  margin: 0 auto;
+}
+.container #remove-alert #alert-container #alert-content .panel-body #buttons button {
+  float: left;
 }
 
 #login-container {

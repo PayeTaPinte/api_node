@@ -4,8 +4,10 @@ html
 		title API - Users
 		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
 		link(rel='stylesheet', href='/styles/main.css')
+		script(type='text/javascript' src='/scripts/angular/angular.js')
+		script(type='text/javascript' src='/scripts/main.js')
 
-	body
+	body(ng-app = "ptp_api")
 		nav.navbar.navbar-default(role='navigation')
 			div.container-fluid
 				div.navbar-header
@@ -17,36 +19,45 @@ html
 						li
 							a(href='/users/') Users
 					ul.nav.navbar-nav.navbar-right
+						li 
+							a(href="/auth/profile") Yo #{currentUser}
 						li
-							a Yo #{currentUser}
-						li
-							a(href='/auth/lougout')
+							a(href='/auth/logout')
 								span.glyphicon.glyphicon-off
 
-		div.container
-				div.row
-					div.col-md-12.col-sm-12.col-xs-12
-						div.panel.panel-default
-							div.panel.panel-heading
-								table.table
-									tr
-										th Name
-										th Id
-										th Mail
-										th Action
-									each user in users
-										tr
-											td= user.local.username
-											td= user._id
-											td= user.local.email
-											td
-												div.crud
-													form(method='get' action='/api/bar/#{user.id}')
-														button(type='submit' class='crud-button')
-															span.glyphicon.glyphicon-share-alt#get
-													//- form(method='post' action='/api/bar/#{user.id}?_method=put')
-													//- 	button(type='submit' class='crud-button')
-													//- 		span.glyphicon.glyphicon-edit#put
-													form(method='post' action="/api/bar/#{user.id}?_method=delete")
-														button(type="submit" class="crud-button")
-															span.glyphicon.glyphicon-remove#delete
+		div(ng-controller = "adminUsersCtrl" class = "container")
+			div.row
+				div.col-md-12.col-sm-12.col-xs-12
+					input(type='text' ng-model="filter" class="form-control" placeholder="Search by name, email...")
+			div.row
+				div.col-md-12.col-sm-12.col-xs-12
+					div.panel.panel-default
+						div.panel.panel-heading
+							table.table
+								tr
+									th Username
+									th Id
+									th Mail
+									th Action
+								each user in users
+									tr(ng-show='isVisible("#{user.local.username}", "#{user.local.email}")' ng-init='addUser("#{user._id}", "#{user.local.username}")')
+										td
+											a(href='/user/#{user.id}')= user.local.username
+										td= user._id
+										td= user.local.email
+										td.crud
+											a(href='/bar/edit/#{user.id}')
+												span.glyphicon.glyphicon-edit#edit
+											button(type='submit' class='crud-button' ng-click="confirmRemove('#{user.id}')")
+												span.glyphicon.glyphicon-remove#delete
+			div#remove-alert(ng-init="!toggle" ng-show='toggle')
+				div#alert-container(ng-click='toggle=!toggle')
+					div(ng-click='toggle=!toggle' id='alert-content' class='panel panel-danger')
+						div.panel-heading
+							h4 Are you sure you wannt to remove
+						div.panel-body
+							h3 {{userToRemove.name}} ?
+							div#buttons
+								button(ng-click="toggle=!toggle" class="btn btn-default") Cancel
+								form(method='post' action='{{ "/api/user/" + userToRemove.id + "?_method=delete"}}')
+									button(type='submit' ng-click="toggle=!toggle" class="btn btn-danger") Delete

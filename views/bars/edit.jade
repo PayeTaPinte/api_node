@@ -1,0 +1,9 @@
+h1 edit bar madafaka
+form(method='post' action='/api/bar/#{barId}?_method=put')
+	label Name
+	input(name='name' placeholder=("#{barName}"))
+	label Address
+	input(name='address' placeholder=("#{barAddress}"))
+	label Price
+	input(name='price' placeholder=("#{barPrice}"))
+	button(type="submit") go

@@ -26,32 +26,48 @@ html
 								span.glyphicon.glyphicon-off
 
 		div(ng-controller = "adminBarsCtrl" class="container")
-				div.row
-					div.col-md-12.col-sm-12.col-xs-12
-						input(type='text' ng-model="filter")
-						div.panel.panel-default
-							div.panel.panel-heading
-								table.table
-									tr
-										th Name
-										th Price
-										th Address
-										th City
-										th Actions
-									each bar in bars
-										tr(ng-show='isVisible("#{bar.name}", "#{bar.price}", "#{bar.address}")')
-											td= bar.name
-											td= bar.price
-											td= bar.address.split(",")[0]
-											td= (bar.address.split(",")[1]).slice(6)
-											td
-												div.crud
-													form(method='get' action='/api/bar/#{bar.id}')
-														button(type='submit' class='crud-button')
-															span.glyphicon.glyphicon-share-alt#get
-													form(method='post' action='/api/bar/#{bar.id}?_method=put')
-														button(type='submit' class='crud-button')
-															span.glyphicon.glyphicon-edit#put
-													form(method='post' action="/api/bar/#{bar.id}?_method=delete")
-														button(type="submit" class="crud-button")
-															span.glyphicon.glyphicon-remove#delete
+			div.row
+				div.col-md-10.col-sm-10.col-xs-10
+					input(type='text' ng-model="filter" class="form-control" placeholder="Search by name, city or Address...")
+				div.col-md-2.col-sm-2.col-xs-2#add-div
+					a(href="/bar/new" id='add-container')
+						button.btn.btn-primary#add-bar-btn
+							span#plus +
+							span#p Create Bar
+			div.row
+				div.col-md-12.col-sm-12.col-xs-12
+					div.panel.panel-default
+						div.panel.panel-heading
+							table.table
+								tr
+									th Name
+									th Price
+									th Address
+									th City
+									th Actions
+								each bar in bars
+									tr(ng-show='isVisible("#{bar.name}", "#{bar.price}", "#{bar.address}")' ng-init='addBar("#{bar.id}", "#{bar.name}")')
+										td
+											a(href='/bar/#{bar.id}')= bar.name
+										td= bar.price
+										td= bar.address.split(",")[0]
+										td= (bar.address.split(",")[1])
+										td.crud
+											a(href='/bar/edit/#{bar.id}')
+												span.glyphicon.glyphicon-edit#edit
+											button(type='submit' class='crud-button' ng-click="confirmRemove('#{bar.id}')")
+												span.glyphicon.glyphicon-remove#delete
+											//- form(method='post' action="/api/bar/#{bar.id}?_method=delete")
+											//- 	button(type="submit" class="crud-button")
+											//- 		span.glyphicon.glyphicon-remove#delete
+			div#remove-alert(ng-init="!toggle" ng-show='toggle')
+				div#alert-container(ng-click='toggle=!toggle')
+					div(ng-click='toggle=!toggle' id='alert-content' class='panel panel-danger')
+						div.panel-heading
+							h4 Are you sure you wannt to remove
+						div.panel-body
+							h3 {{barToRemove.name}} ?
+							div#buttons
+								button(ng-click="toggle=!toggle" class="btn btn-default") Cancel
+								form(method='post' action='{{ "/api/bar/" + barToRemove.id + "?_method=delete"}}')
+									button(type='submit' ng-click="toggle=!toggle" class="btn btn-danger") Delete
