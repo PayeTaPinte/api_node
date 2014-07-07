@@ -46,15 +46,13 @@ html
 										td= user._id
 										td= user.local.email
 										td.crud
-											a(href='/bar/edit/#{user.id}')
-												span.glyphicon.glyphicon-edit#edit
 											button(type='submit' class='crud-button' ng-click="confirmRemove('#{user.id}')")
 												span.glyphicon.glyphicon-remove#delete
 			div#remove-alert(ng-init="!toggle" ng-show='toggle')
 				div#alert-container(ng-click='toggle=!toggle')
 					div(ng-click='toggle=!toggle' id='alert-content' class='panel panel-danger')
 						div.panel-heading
-							h4 Are you sure you wannt to remove
+							h4 Are you sure you wannt to remove the user:
 						div.panel-body
 							h3 {{userToRemove.name}} ?
 							div#buttons

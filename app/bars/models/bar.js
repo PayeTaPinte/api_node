@@ -10,6 +10,8 @@ var BarSchema = new Schema({
 	price: Number,
 	price_happy: Number,
 	start_happy: String,
+	addedBy: String,
+	modifiedBy: String,
 	location: {
 		type: [Schema.Types.Mixed]
 	}

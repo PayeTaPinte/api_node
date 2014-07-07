@@ -1,9 +1,35 @@
-h1 edit bar madafaka
-form(method='post' action='/api/bar/#{barId}?_method=put')
-	label Name
-	input(name='name' placeholder=("#{barName}"))
-	label Address
-	input(name='address' placeholder=("#{barAddress}"))
-	label Price
-	input(name='price' placeholder=("#{barPrice}"))
-	button(type="submit") go
+html
+	head
+		title Edit - Bar
+		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='/styles/main.css')
+	body
+	body
+		nav.navbar.navbar-default(role='navigation')
+					div.container-fluid
+						div.navbar-header
+							a.navbar-brand(href='/bars/') API
+						div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+							ul.nav.navbar-nav
+								li
+									a(href='/bars/') Bars
+								li
+									a(href='/users/') Users
+							ul.nav.navbar-nav.navbar-right
+								li
+									a(href="/auth/profile") Yo #{currentUser}
+								li
+									a(href='/auth/logout')
+										span.glyphicon.glyphicon-off
+		div.container
+			div.row
+				div.col-md-12.col-xs12
+					h1 edit
+					form(method='post' action='/api/bar/#{barId}?_method=put')
+						label Name
+						input(name='name' placeholder=("#{barName}"))
+						label Address
+						input(name='address' placeholder=("#{barAddress}"))
+						label Price
+						input(name='price' placeholder=("#{barPrice}"))
+						button(type="submit") go

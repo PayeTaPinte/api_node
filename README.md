@@ -28,5 +28,10 @@
 		post: members => OK
 		delete: admin => NOT YET
 
+que fait-on pour le model bar
 réflechir sur l'affichage des unités de monnaies selon les pays
 instagram en flux #ptp
+
+modified
+	bar model
+	

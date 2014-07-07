@@ -23,16 +23,23 @@ router.route('/bars')
 router.route('/bar/new')
 	.get userFunctions.isAdmin, (req, res) ->
 		res.render 'bars/new'
+		currentUser: req.user.local.username
 
 router.route('/bar/:bar_id')
 	.get userFunctions.isAdmin, (req, res) ->
 		Bar.findById req.params.bar_id, (err, bar) ->
 			if bar
-				res.render 'bars/bar', 
-					barId: bar.id
-					barName: bar.name
-					barAddress: bar.address
-					barPrice: bar.price
+				User.find {_id: bar.addedBy}, (err, resultAdd) ->
+					User.find {_id: bar.modifiedBy}, (err, resultModify) ->
+						res.render 'bars/bar', 
+							barId: bar.id
+							barName: bar.name
+							barAddress: bar.address
+							barPrice: bar.price
+							resultAdd: resultAdd[0]
+							resultModify: resultModify[0]
+							currentUser: req.user.local.username
+
 			else
 				throw 'no bar found'
 			if err
@@ -47,6 +54,7 @@ router.route('/bar/edit/:bar_id')
 					barName: bar.name
 					barAddress: bar.address
 					barPrice: bar.price
+					currentUser: req.user.local.username
 
 router.route('/users/')
 	.get userFunctions.isAdmin, (req, res) ->
@@ -64,7 +72,10 @@ router.route('/user/:user_id')
 	.get userFunctions.isAdmin, (req, res) ->
 		User.findById req.params.user_id, (err, user) ->
 			if user
-				res.render 'users/user',
-					userId: user.id
+				Bar.find {addedBy: user._id}, (err, result) ->
+					res.render 'users/user',
+						userId: user.id
+						result: result
+						currentUser: req.user.local.username
 
 module.exports = router

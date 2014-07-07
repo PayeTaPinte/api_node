@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs')
+var Bar = require('../../bars/models/bar')
+
 
 var UserSchema = new mongoose.Schema({
 
@@ -9,7 +11,7 @@ var UserSchema = new mongoose.Schema({
 		password: String,
 	},
 	roles: {
-		type: Array,
+		type: [String],
 		default: ['user']
 	},
 

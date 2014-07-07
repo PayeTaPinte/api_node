@@ -6,25 +6,26 @@ html
 		link(rel='stylesheet', href='/styles/main.css')
 
 	body
-		div.container#login-container
-			div.raw
-				div#login
-					img(src='/img/api_logo.png' width='120' height='106' id="api-logo")
+		div.main
+			div.container#login-container
+				div.raw
+					div#login
+						img(src='/img/api_logo.png' width='120' height='106' id="api-logo")
 
-					if (message.length > 0)
-						p(class = 'alert alert-danger')= message
+						if (message.length > 0)
+							p(class = 'alert alert-danger')= message
 
-					form(action = '/auth/signup' method = 'post' class = 'form-horizontal')
-						div(class = 'form-group')
-							//- label Userame
-							input(type = "text" class = "form-control" name="username" placeholder='Username')
-						div(class = 'form-group')
-							//- label Email
-							input(type = "text" class = "form-control" name="email" placeholder='Email')
-						div(class = 'form-group' id="password-input")
-							//- label Password
-							input(type = "password" class = "form-control" name="password" placeholder='Password')
-						p#create-account
-							a(href='/auth/login') Already have an account?
-						div(class = 'button form-group')
-							button(type = 'submit' class='btn btn-success' id='login-submit') SignUp
+						form(action = '/auth/signup' method = 'post' class = 'form-horizontal')
+							div(class = 'form-group')
+								//- label Userame
+								input(type = "text" class = "form-control" name="username" placeholder='Username')
+							div(class = 'form-group')
+								//- label Email
+								input(type = "text" class = "form-control" name="email" placeholder='Email')
+							div(class = 'form-group' id="password-input")
+								//- label Password
+								input(type = "password" class = "form-control" name="password" placeholder='Password')
+							p#create-account
+								a(href='/auth/login') Already have an account?
+							div(class = 'button form-group')
+								button(type = 'submit' class='btn btn-success' id='login-submit') SignUp

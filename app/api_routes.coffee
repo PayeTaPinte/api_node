@@ -3,6 +3,13 @@ geocoder = require('node-geocoder').getGeocoder('google', 'http')
 Bar = require('./bars/models/bar')
 User = require('./users/models/user')
 
+# user = {
+# 	_id: "kkkd"
+# 	name: "tarace"
+# 	email: "mlkj@mljk.com"
+# }
+# userbars = User.getBars(user._id)
+
 router = express.Router()
 
 userFunctions = require('./usersFunctions')
@@ -18,6 +25,7 @@ router.route('/bars')
 		bar.name = req.body.name
 		bar.price = req.body.price
 		bar.address = req.body.address
+		bar.addedBy = req.user._id
 		geocoder.geocode req.body.address, (err, result) ->
 			console.log result
 			bar.location = result
@@ -58,6 +66,7 @@ router.route('/bar/:bar_id')
 			bar.name = req.body.name
 			bar.address = req.body.address
 			bar.price = req.body.price
+			bar.modifiedBy = req.user._id
 			geocoder.geocode req.body.address, (err, result) ->
 				bar.location = result
 				bar.save (err, bar) ->

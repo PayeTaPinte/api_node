@@ -113,13 +113,23 @@
   float: left;
 }
 
-#login-container {
+.main {
+  width: 100%;
+  height: 100%;
+  background: url(/img/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: table;
+}
+.main #login-container {
   display: table-cell;
   vertical-align: middle;
   height: 100%;
   width: 100%;
 }
-#login-container .raw #login {
+.main #login-container .raw #login {
   width: 23%;
   min-width: 290px;
   margin: 0 auto;
@@ -130,19 +140,19 @@
   box-shadow: 0px 1px 10px #555;
   padding-bottom: 25px;
 }
-#login-container .raw #login #api-logo {
+.main #login-container .raw #login #api-logo {
   margin: 25px;
 }
-#login-container .raw #login form .form-group {
+.main #login-container .raw #login form .form-group {
   margin-left: 0;
   margin-right: 0;
   padding-right: 20px;
   padding-left: 20px;
 }
-#login-container .raw #login form .form-group label {
+.main #login-container .raw #login form .form-group label {
   float: left;
 }
-#login-container .raw #login form .form-group input {
+.main #login-container .raw #login form .form-group input {
   background-color: rgba(231, 231, 231, 0);
   border: none;
   border-radius: 0px;
@@ -150,36 +160,36 @@
   border-bottom: 1px solid #999;
   color: #222222;
 }
-#login-container .raw #login form .form-group .form-control:focus {
+.main #login-container .raw #login form .form-group .form-control:focus {
   border-color: rgba(34, 34, 34, 0.7);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(255, 224, 45, 0);
   outline: 0 none;
 }
-#login-container .raw #login form .form-group .button #login-submit {
+.main #login-container .raw #login form .form-group .button #login-submit {
   background-color: white;
   color: #222222;
   border: 1px solid #ccc;
   border-radius: 3px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) width;
 }
-#login-container .raw #login form .form-group .button #login-submit:focus {
+.main #login-container .raw #login form .form-group .button #login-submit:focus {
   border-color: rgba(255, 224, 45, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(255, 224, 45, 0);
   outline: 0 none;
 }
-#login-container .raw #login form .form-group .button span {
+.main #login-container .raw #login form .form-group .button span {
   margin-left: 5%;
   margin-right: 5%;
 }
-#login-container .raw #login form #password-input {
+.main #login-container .raw #login form #password-input {
   margin: 0;
 }
-#login-container .raw #login form #create-account {
+.main #login-container .raw #login form #create-account {
   font-size: 12px;
   text-align: right;
   padding-right: 20px;
 }
-#login-container .raw #login form #create-account a {
+.main #login-container .raw #login form #create-account a {
   color: #777;
 }
 
@@ -190,13 +200,10 @@ html {
 html body {
   width: 100%;
   height: 100%;
-  background: url(/img/background.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: table;
 }
 html body .navbar {
   border-radius: 0px;
+}
+html body .navbar .container-fluid .navbar-collapse .navbar-right li a {
+  cursor: pointer;
 }

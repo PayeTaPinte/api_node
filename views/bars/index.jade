@@ -20,9 +20,9 @@ html
 							a(href='/users/') Users
 					ul.nav.navbar-nav.navbar-right
 						li
-							a Yo #{currentUser}
+							a(href="/auth/profile") Yo #{currentUser}
 						li
-							a(href='/auth/lougout')
+							a(href='/auth/logout')
 								span.glyphicon.glyphicon-off
 
 		div(ng-controller = "adminBarsCtrl" class="container")
@@ -64,7 +64,7 @@ html
 				div#alert-container(ng-click='toggle=!toggle')
 					div(ng-click='toggle=!toggle' id='alert-content' class='panel panel-danger')
 						div.panel-heading
-							h4 Are you sure you wannt to remove
+							h4 Are you sure you wannt to remove the bar:
 						div.panel-body
 							h3 {{barToRemove.name}} ?
 							div#buttons
