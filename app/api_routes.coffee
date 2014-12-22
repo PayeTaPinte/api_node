@@ -3,29 +3,32 @@ geocoder = require('node-geocoder').getGeocoder('google', 'http')
 Bar = require('./bars/models/bar')
 User = require('./users/models/user')
 
-# user = {
-# 	_id: "kkkd"
-# 	name: "tarace"
-# 	email: "mlkj@mljk.com"
-# }
-# userbars = User.getBars(user._id)
-
 router = express.Router()
 
 userFunctions = require('./usersFunctions')
 
-
 # ////////////////////////// BARS /////////////////////////////////////
 
+router.route('/markers')
+	.post (req, res) ->
+		marker = new Marker(req.body)
+		marker.type = req.body.type
+		marker.title = req.body.title
+		marker.image = req.body.image
+		marker.save (err, marker) ->
+			if(err)
+				console.log 'error', err
+			res.send(200, marker)
 
 router.route('/bars')
-	.post (req, res) ->
+	.post userFunctions.isAdmin, (req, res) ->
 		res.redirect '/auth/login' unless req.isAuthenticated()
 		bar = new Bar(req.body)
 		bar.name = req.body.name
 		bar.price = req.body.price
 		bar.address = req.body.address
 		bar.addedBy = req.user._id
+		bar.isOn = false
 		geocoder.geocode req.body.address, (err, result) ->
 			console.log result
 			bar.location = result
@@ -66,6 +69,7 @@ router.route('/bar/:bar_id')
 			bar.name = req.body.name
 			bar.address = req.body.address
 			bar.price = req.body.price
+			bar.isOn = req.body.isOn
 			bar.modifiedBy = req.user._id
 			geocoder.geocode req.body.address, (err, result) ->
 				bar.location = result
@@ -85,7 +89,6 @@ router.route('/bar/:bar_id')
 
 
 # ////////////////////////// USERS /////////////////////////////////////
-
 
 router.route('/users')
 	.get (req, res) ->

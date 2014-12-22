@@ -12,6 +12,7 @@ ptp_api.controller 'adminBarsCtrl', ['$scope', ($scope) ->
 		$scope.barToRemove = $scope.bars[id]
 
 	$scope.bars = {}
+
 	$scope.addBar = (id, name) ->
 		$scope.bars[id] = 
 			id: id
@@ -30,6 +31,7 @@ ptp_api.controller 'adminUsersCtrl', ['$scope', ($scope) ->
 		$scope.userToRemove = $scope.users[id]
 
 	$scope.users = {}
+	
 	$scope.addUser = (id, name) ->
 		$scope.users[id] = 
 			id: id

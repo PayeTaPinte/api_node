@@ -14,7 +14,8 @@ var BarSchema = new Schema({
 	modifiedBy: String,
 	location: {
 		type: [Schema.Types.Mixed]
-	}
+	},
+	isOn: Boolean
 });
 
 module.exports = mongoose.model('Bar', BarSchema);

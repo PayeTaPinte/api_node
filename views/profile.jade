@@ -1,10 +1,18 @@
 doctype html
 html
 	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 		title Profile
+		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='/styles/main.css')
 
 	body
-		h1 Profile
-
-		p= user.local.username
-		p= user.roles
+		div.container#profile
+			div.row
+				div.col-md-12
+					if user.roles == "user" 
+						p Yo #{user.local.username}, you have to be admin to see whatever you want, ask me.
+					if user.roles == "admin"
+						p Yo #{user.local.username}
+					a(href='https://www.facebook.com/pq.benoit?ref=tn_tnmn')
+						img(src='/img/ben.jpg' width="160" height="160")

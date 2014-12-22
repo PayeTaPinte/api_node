@@ -2,8 +2,8 @@ module.exports.hasRole = (user, role) ->
 	return role in user.roles
 
 module.exports.isAdmin = (req, res, next)->
-	console.log 'check isAdmin'
 	if req.isAuthenticated() == true && 'admin' in req.user.roles
+		console.log 'check isAdmin'
 		next()
 	else
 		res.redirect '/auth/login'

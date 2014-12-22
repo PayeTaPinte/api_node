@@ -9,9 +9,6 @@ router.route('/bars')
 	.get userFunctions.isAdmin, (req, res) ->
 		Bar.find (err, bars) ->
 			if bars
-				# geocoder.geocode '29 champs elysée paris', (err, result) ->
-				# 	console.log result[0].latitude
-
 					res.render 'bars/index',
 						bars: bars
 						currentUser: req.user.local.username
@@ -54,6 +51,7 @@ router.route('/bar/edit/:bar_id')
 					barName: bar.name
 					barAddress: bar.address
 					barPrice: bar.price
+					barIsOn: bar.isOn
 					currentUser: req.user.local.username
 
 router.route('/users/')
