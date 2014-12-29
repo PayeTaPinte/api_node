@@ -21,7 +21,7 @@ router.route('/markers')
 			res.send(200, marker)
 
 router.route('/bars')
-	.post (req, res) ->
+	.post userFunctions.isUser, (req, res) ->
 		bar = new Bar(req.body)
 		bar.name = req.body.name
 		bar.price = req.body.price
@@ -29,12 +29,12 @@ router.route('/bars')
 		bar.addedBy = req.user._id
 		bar.isOn = false
 		geocoder.geocode req.body.address, (err, result) ->
-			console.log result
 			bar.location = result
 			bar.save (err, bar) ->
 				if(err)
 					console.log 'error', err
-				res.send(200, bar)
+				console.log bar
+				res.send(200)
 			# res.json message: "Bar created"
 
 	.get (req, res) ->
@@ -89,6 +89,10 @@ router.route('/bar/:bar_id')
 
 
 # ////////////////////////// USERS /////////////////////////////////////
+router.route('/whois')
+	.get (req, res) ->
+		console.log req.user
+
 
 router.route('/users')
 	.get (req, res) ->

@@ -12,7 +12,7 @@ router = require('./app/auth')
 
 allowCrossDomain = (req, res, next) -> 
 	res.header('Access-Control-Allow-Credentials', true)
-	res.header('Access-Control-Allow-Origin', 'http://ptpconnection:1234') #set right domain for client
+	res.header('Access-Control-Allow-Origin', 'http://ptp01:8888') #set right domain for client
 	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
 	res.header('Access-Control-Allow-Headers', 'X-Custom-Header, Content-Type, Authorization, Content-Length, X-Requested-With')
 
@@ -40,6 +40,7 @@ app.use cookieParser()
 app.use session (
 	secret: 'hellolesboyz'
 	proxy: true
+	unset: 'destroy'
 )
 
 app.use passport.initialize()
