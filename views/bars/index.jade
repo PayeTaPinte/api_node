@@ -1,6 +1,7 @@
 doctype html
 html
 	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 		title API - Bars
 		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
 		link(rel='stylesheet', href='/styles/main.css')
@@ -44,6 +45,7 @@ html
 									th Price
 									th Address
 									th City
+									th Validated
 									th Actions
 								each bar in bars
 									tr(ng-show='isVisible("#{bar.name}", "#{bar.price}", "#{bar.address}")' ng-init='addBar("#{bar.id}", "#{bar.name}")')
@@ -52,11 +54,17 @@ html
 										td= bar.price
 										td= bar.address.split(",")[0]
 										td= (bar.address.split(",")[1])
+										if !bar.isOn
+											td
+												span.glyphicon.glyphicon-remove
+										else
+											td
+												span.glyphicon.glyphicon-ok
 										td.crud
 											a(href='/bar/edit/#{bar.id}')
 												span.glyphicon.glyphicon-edit#edit
 											button(type='submit' class='crud-button' ng-click="confirmRemove('#{bar.id}')")
-												span.glyphicon.glyphicon-remove#delete
+												span.glyphicon.glyphicon-trash#delete
 											//- form(method='post' action="/api/bar/#{bar.id}?_method=delete")
 											//- 	button(type="submit" class="crud-button")
 											//- 		span.glyphicon.glyphicon-remove#delete

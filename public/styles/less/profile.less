@@ -1,0 +1,35 @@
+html {
+	body {
+		#profile {
+			width: 100%;
+			height: 100%;
+			display: table;
+
+			.row {
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+
+				.col-md-12 {
+					a {
+						margin: 20px;
+						img {
+							border-radius: 80px;
+							-webkit-filter: grayscale(50%);
+							-moz-filter: grayscale(50%);
+							filter: grayscale(50%);
+						}
+
+						img:hover {
+							border-radius: 80px;
+							-webkit-filter: grayscale(0%);
+							-moz-filter: grayscale(0%);
+							filter: grayscale(0%);
+							transition: 0.4s;
+						}
+					}
+				}
+			}
+		}
+	}
+}

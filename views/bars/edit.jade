@@ -1,5 +1,6 @@
 html
 	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 		title Edit - Bar
 		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
 		link(rel='stylesheet', href='/styles/main.css')
@@ -27,9 +28,14 @@ html
 					h1 edit
 					form(method='post' action='/api/bar/#{barId}?_method=put')
 						label Name
-						input(name='name' placeholder=("#{barName}"))
+						input(name='name' placeholder=("#{barName}") value="#{barName}")
 						label Address
-						input(name='address' placeholder=("#{barAddress}"))
+						input(name='address' placeholder=("#{barAddress}") value="#{barAddress}")
 						label Price
-						input(name='price' placeholder=("#{barPrice}"))
+						input(name='price' placeholder=("#{barPrice}") value="#{barPrice}")
+						label Validate
+						if !barIsOn
+							input(name='isOn' type="checkbox")
+						else
+							input(name='isOn' type="checkbox" checked)
 						button(type="submit") go

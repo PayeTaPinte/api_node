@@ -25,6 +25,7 @@ request(onlineJson, function(error, response, body) {
 				newbar.price_happy = bar.price_happy;
 				newbar.end_happy = bar.end_happy;
 				newbar.start_happy = bar.start_happy;
+				newbar.isOn = true;
 				// newbar.slug
 
 				newbar.save(function(err, qmfsdlj){

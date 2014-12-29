@@ -2,6 +2,17 @@ passport = require('passport')
 LocalStrategy = require('passport-local').Strategy
 User = require('../app/users/models/user')
 
+makeid = () ->
+	token = ""
+	chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	i = 0
+
+	while i < 30
+		token += chars.charAt(Math.floor(Math.random() * chars.length))
+		i++
+
+	return token
+
 passport.serializeUser (user, done) ->
 	done null, user.id
 
@@ -32,6 +43,7 @@ passport.use 'local-signup', new LocalStrategy(
 				newUser.local.username = username
 				newUser.local.email = req.body.email
 				newUser.local.password = newUser.generateHash(password)
+				newUser.local.token = makeid()
 
 				newUser.save (err) ->
 					if(err)
@@ -52,7 +64,7 @@ passport.use "local-login", new LocalStrategy(
 	passReqToCallback: true
 , (req, username, password, done) ->
 	process.nextTick ->
-		console.log username
+		
 		User.findOne { 'local.username': username }, (err, user) ->
 			if(err)
 				return done(err)
@@ -62,6 +74,6 @@ passport.use "local-login", new LocalStrategy(
 
 			if(!user.validPassword(password))
 				return done(null, false, req.flash 'loginMessage', 'No user found / Wrong password')
-
+				
 			return done(null, user)
 )

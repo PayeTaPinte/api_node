@@ -28,10 +28,12 @@ router.post '/signup', passport.authenticate("local-signup",
 	failureFlash: true
 )
 
-router.post '/login', passport.authenticate('local-login',
-	successRedirect: '/bars/'
-	failureRedirect: '/auth/login'
-	failureFlash: true
-)
+router.post '/login', passport.authenticate('local-login'
+	#successRedirect: '/bars'
+	#failureRedirect: '/auth/login'
+	#failureFlash: true	
+), (req, res) ->
+	console.log req.sessionID
+	res.redirect '/bars'
 
 module.exports = router

@@ -207,3 +207,30 @@ html body .navbar {
 html body .navbar .container-fluid .navbar-collapse .navbar-right li a {
   cursor: pointer;
 }
+
+html body #profile {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+html body #profile .row {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+html body #profile .row .col-md-12 a {
+  margin: 20px;
+}
+html body #profile .row .col-md-12 a img {
+  border-radius: 80px;
+  -webkit-filter: grayscale(50%);
+  -moz-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+html body #profile .row .col-md-12 a img:hover {
+  border-radius: 80px;
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  filter: grayscale(0%);
+  transition: 0.4s;
+}
