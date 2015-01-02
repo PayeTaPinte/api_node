@@ -16,6 +16,8 @@ html(ng-app='ptp_api')
 							a(href='/bars/') Bars
 						li
 							a(href='/users/') Users
+						li
+							a(href='/modifications') Modifications
 					ul.nav.navbar-nav.navbar-right
 						li
 							a(href="/auth/profile") Yo #{currentUser}
@@ -34,3 +36,5 @@ html(ng-app='ptp_api')
 						p Bar added by #{resultAdd.local.username}
 					if resultModify
 						p Bar modified by #{resultModify.local.username}
+					p modifications waiting: 
+						span= modifLength

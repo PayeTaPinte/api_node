@@ -16,6 +16,8 @@ html
 									a(href='/bars/') Bars
 								li
 									a(href='/users/') Users
+								li
+									a(href='/modifications') Modifications
 							ul.nav.navbar-nav.navbar-right
 								li
 									a(href="/auth/profile") Yo #{currentUser}
@@ -26,16 +28,77 @@ html
 			div.row
 				div.col-md-12.col-xs12
 					h1 edit
-					form(method='post' action='/api/bar/#{barId}?_method=put')
+					form(method='post' action='/api/modifications')
+
+						input(name="barId" type="hidden" value="#{barId}")
+
 						label Name
 						input(name='name' placeholder=("#{barName}") value="#{barName}")
+
 						label Address
 						input(name='address' placeholder=("#{barAddress}") value="#{barAddress}")
+
 						label Price
 						input(name='price' placeholder=("#{barPrice}") value="#{barPrice}")
+
+						label Happy hour
+						if !barHasHappy
+							input(name='has_happy' type="checkbox" )
+						else
+							input(name='has_happy' type="checkbox" checked)
+
+						label Début happy
+						input(name='start_happy' type="time")
+						
+						label Fin happy
+						input(name='end_happy' type="time")
+						
+						
+						label Terrasse
+						if !barTerrass
+							input(type="checkbox" name='terrass')
+						else
+							input(type="checkbox" name='terrass' checked)
+
+						label Carte bleue
+						if !barIsCb
+							input(type="checkbox" name='isCb')
+						else
+							input(type="checkbox" name='isCb' checked)
+						
+						label Minimum carte bleue
+						input(name='minCb' type="number" value="#{barMinCb}")
+
+						input(type="hidden" value="#{barMetro}")
+				
+						label Babyfoot
+						if !barBabyfoot
+							input(name='babyfoot' type="checkbox")
+						else
+							input(name='babyfoot' type="checkbox" checked)
+
+						label Billard
+						if !barPool
+							input(name='pool' type="checkbox")
+						else
+							input(name='pool' type="checkbox" checked)
+
+						label Flèchettes
+						if !barDarts
+							input(name='darts' type="checkbox")
+						else
+							input(name='darts' type="checkbox" checked)
+
+						label Concert
+						if !barConcert
+							input(name='concert' type="checkbox")
+						else
+							input(name='concert' type="checkbox" checked)
+	
 						label Validate
 						if !barIsOn
 							input(name='isOn' type="checkbox")
 						else
 							input(name='isOn' type="checkbox" checked)
+
 						button(type="submit") go

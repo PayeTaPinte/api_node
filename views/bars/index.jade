@@ -19,6 +19,8 @@ html
 							a(href='/bars/') Bars
 						li
 							a(href='/users/') Users
+						li
+							a(href='/modifications') Modifications
 					ul.nav.navbar-nav.navbar-right
 						li
 							a(href="/auth/profile") Yo #{currentUser}
@@ -52,8 +54,10 @@ html
 										td
 											a(href='/bar/#{bar.id}')= bar.name
 										td= bar.price
-										td= bar.address.split(",")[0]
-										td= (bar.address.split(",")[1])
+										//- td= bar.location[0].streetNumber + ' ' + bar.location[0].streetName
+										//- td= bar.location[0].zipcode + ' ' + bar.location[0].city
+										td address
+										td zipcode
 										if !bar.isOn
 											td
 												span.glyphicon.glyphicon-remove

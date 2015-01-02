@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var BarSchema = new Schema({
+var ModificationSchema = new Schema({
+	barId: String,
 	address: String,
 	end_happy: String,
 	name: String,
@@ -15,18 +16,15 @@ var BarSchema = new Schema({
 		type: [Schema.Types.Mixed]
 	},
 	terrass: Boolean,
-	activities:	{
+	activities: {
 		babyfoot: Boolean,
 		pool: Boolean,
 		darts: Boolean,
 		concert: Boolean
 	},
-	isOn: Boolean,
 	isCb: Boolean,
 	minCb: Number,
-	metro: {
-		type: [Schema.Types.Mixed]
-	}
+	isOn: Boolean
 });
 
-module.exports = mongoose.model('Bar', BarSchema);
+module.exports = mongoose.model('Modification', ModificationSchema);

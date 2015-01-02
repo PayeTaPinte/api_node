@@ -33,7 +33,8 @@ router.post '/login', passport.authenticate('local-login'
 	#failureRedirect: '/auth/login'
 	#failureFlash: true	
 ), (req, res) ->
+	console.log "wesh"
 	console.log req.sessionID
-	res.redirect '/bars'
+	res.send 200, req.user
 
 module.exports = router

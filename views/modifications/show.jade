@@ -1,0 +1,116 @@
+html(ng-app='ptp_api')
+	head
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		title Modification - Details
+		link(rel='stylesheet', href='/styles/bootstrap/bootstrap.css')
+		link(rel='stylesheet', href='/styles/main.css')
+	body(ng-app = "ptp_api")
+		nav.navbar.navbar-default(role='navigation')
+			div.container-fluid
+				div.navbar-header
+					a.navbar-brand(href='/bars/') API
+				div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+					ul.nav.navbar-nav
+						li
+							a(href='/bars/') Bars
+						li
+							a(href='/users/') Users
+						li
+							a(href='/modifications') Modifications
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href="/auth/profile") Yo #{currentUser}
+						li
+							a(href='/auth/logout')
+								span.glyphicon.glyphicon-off
+
+		div.container
+			div.row
+				div.col-md-12.col-xs-12
+					table.table
+						tr
+							th
+							th Bar
+							th Modification
+						tr
+							th Name
+							td #{barName}
+							td #{modifName}
+						tr
+							th Adresse
+							td #{barAddress}
+							td #{modifAdress}
+						tr
+							th Price
+							td #{barPrice}
+							td #{modifPrice}
+						tr
+							th Carte bleue
+							td #{barIsCb}
+							td #{modifIsCb}
+						tr
+							th Minimum carte bleue
+							td #{barMinCb}
+							td #{modifMinCb}
+						tr
+							th Terrass
+							td #{barTerrass}
+							td #{modifTerrass}						
+						tr
+							th Happy hour
+							td #{barHasHappy}
+							td #{modifHasHappy}
+						tr
+							th Price Happy
+							td #{barPriceHappy}
+							td #{modifPriceHappy}
+						tr
+							th Début Happy
+							td #{barStartHappy}
+							td #{modifStartHappy}
+						tr 
+							th Fin Happy
+							td #{barEndHappy}
+							td #{modifEndHappy}
+						tr
+							th Babyfoot
+							td #{barBabyfoot}
+							td #{modifBabyfoot}
+						tr
+							th Billard
+							td #{barPool}
+							td #{modifPool}
+						tr
+							th Flèchettes
+							td #{barDarts}
+							td #{modifDarts}
+						tr
+							th Concert
+							td #{barConcert}
+							td #{modifConcert}
+
+
+					form(method="post" action="/api/bar/#{barId}?_method=put")
+						input(type="hidden" value="#{modifName}" placeholder="#{modifName}" name="name")
+						input(type="hidden" value="#{modifAdress}" name='address')
+						input(type="hidden" value="#{modifPrice}" name='price')
+						input(type="hidden" value="#{modifIsCb}" name='isCb')
+						if minCb
+							input(type="hidden" value="#{modifMinCb}" name='minCb')
+						input(type="hidden" value="#{modifTerrass}" name='terrass')
+						if modifPriceHappy
+							input(type="hidden" value="#{modifPriceHappy}" name='price_happy')
+						input(type="hidden" value="#{modifHasHappy}" name='has_happy')
+						input(type="hidden" value="#{modifStartHappy}" name='start_happy')
+						input(type="hidden" value="#{modifEndHappy}" name='end_happy')
+						input(type="hidden" value="#{modifBabyfoot}" name='babyfoot')
+						input(type="hidden" value="#{modifPool}" name='pool')
+						input(type="hidden" value="#{modifDarts}" name='darts')
+						input(type="hidden" value="#{modifConcert}" name='concert')
+						button(type="submit") go
+						//- input(type="submit") Confirmer la modification
+
+
+
+
+		
