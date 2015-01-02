@@ -9,8 +9,9 @@ module.exports.isAdmin = (req, res, next)->
 		res.redirect '/auth/login'
 
 module.exports.isUser = (req, res, next)->
-	if req.isAuthenticated() == true
-		console.log 'is user'
+	console.log 'avant verif: ', req.user
+	if req.user != null
+		console.log 'is user: ' + req.user
 		next()
 	else
 		res.redirect '/auth/login'

@@ -22,7 +22,7 @@ router.route('/markers')
 			res.send(200, marker)
 
 router.route('/bars')
-	.post (req, res) ->
+	.post userFunctions.isUser, (req, res) ->
 		bar = new Bar(req.body)
 		bar.name = req.body.name
 		bar.price = req.body.price
@@ -198,6 +198,10 @@ router.route('/modifications')
 			res.send(200, modif)
 
 # ////////////////////////// USERS /////////////////////////////////////
+router.route('/whois')
+	.get (req, res) ->
+		console.log req.user
+
 
 router.route('/users')
 	.get userFunctions.isAdmin, (req, res) ->

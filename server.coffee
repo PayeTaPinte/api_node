@@ -40,6 +40,7 @@ app.use cookieParser()
 app.use session (
 	secret: 'hellolesboyz'
 	proxy: true
+	unset: 'destroy'
 )
 
 app.use passport.initialize()
